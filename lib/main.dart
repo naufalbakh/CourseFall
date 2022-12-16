@@ -1,3 +1,4 @@
+import 'package:banyuwangikuliner/view/profile.dart';
 import 'package:flutter/material.dart';
 import 'package:banyuwangikuliner/view/boarding.dart';
 import 'package:banyuwangikuliner/view/home.dart';
@@ -17,7 +18,7 @@ class MyApp extends StatelessWidget {
       // theme: themeData,
       debugShowCheckedModeBanner: false,
       // home : Login(),
-      home: Boarding(),
+      home: Login(),
       // home : dashboardd(),
     );
   }

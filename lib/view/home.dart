@@ -1,9 +1,14 @@
+import 'package:banyuwangikuliner/view/boarding.dart';
+import 'package:banyuwangikuliner/view/detail.dart';
+import 'package:banyuwangikuliner/view/profile.dart';
 import 'package:flutter/material.dart';
 import 'package:banyuwangikuliner/view/login.dart';
 import 'package:banyuwangikuliner/service/apiservice.dart';
 import 'package:banyuwangikuliner/model/course.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'dart:js' as js;
+
+import '../service/apiservice.dart';
 
 class Home extends StatefulWidget {
   const Home({Key? key}) : super(key: key);
@@ -12,7 +17,7 @@ class Home extends StatefulWidget {
   State<Home> createState() => _HomeState();
 }
 
-List<Course>? course;
+// List<Course>? course;
 
 class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
   late TabController tabcontroller;
@@ -38,6 +43,41 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      drawer: Drawer(
+        child: ListView(
+          // Important: Remove any padding from the ListView.
+          padding: EdgeInsets.zero,
+          children: [
+            ListTile(
+              leading: const Icon(Icons.logout),
+              title: const Text('Boarding Page'),
+              onTap: () {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => Boarding()));
+              },
+            ),
+            ListTile(
+              leading: const Icon(Icons.home),
+              title: const Text('Home Page'),
+              onTap: () {
+                icon:
+                new Icon(Icons.logout);
+                Navigator.pop(context);
+              },
+            ),
+            ListTile(
+              leading: const Icon(Icons.accessible),
+              title: const Text('Profile'),
+              onTap: () {
+                icon:
+                new Icon(Icons.logout);
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => ProfileApp()));
+              },
+            ),
+          ],
+        ),
+      ),
       // appBar: AppBar(
       //   title: const Text('Banyuwangi Kuliner'),
       //   // title:
@@ -69,11 +109,11 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
             )),
             Tab(
                 icon: GestureDetector(
-              child: Icon(Icons.account_balance_rounded),
+              child: Icon(Icons.account_circle_rounded),
               onTap: () => Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => Home(),
+                    builder: (context) => ProfileApp(),
                   )),
             )),
           ],
@@ -233,8 +273,13 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
                                     ),
                                 itemBuilder: (context, index) =>
                                     GestureDetector(
-                                      onTap: () =>
-                                          _url("${snapshot.data![index].url}"),
+                                      onTap: () => Navigator.of(context)
+                                          .push(MaterialPageRoute(
+                                        builder: (context) => detailPage(
+                                            data: snapshot.data![index],
+                                            fetchData:
+                                                ApiService().fetchDataCourse()),
+                                      )),
                                       child: Column(
                                         children: [
                                           Container(
@@ -326,63 +371,6 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
               }
             }
           }),
-      drawer: Drawer(
-        // Add a ListView to the drawer. This ensures the user can scroll
-        // through the options in the drawer if there isn't enough vertical
-        // space to fit everything.
-        child: ListView(
-          // Important: Remove any padding from the ListView.
-          padding: EdgeInsets.zero,
-          children: [
-            const DrawerHeader(
-              decoration: BoxDecoration(
-                color: Colors.blueAccent,
-              ),
-              child: Text(
-                'Fakultas Sains dan Teknologi',
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  color: Colors.white,
-                ),
-              ),
-            ),
-            ListTile(
-                leading: Icon(Icons.home),
-                title: const Text('HOME'),
-                onTap: () => print('Tap Trash menu')),
-            ListTile(
-              leading: Icon(Icons.school),
-              title: const Text('Teknik Informatika'),
-              onTap: () {
-                // Navigator.pop(context);
-                // Navigator.push(context,
-                //     MaterialPageRoute(builder: (context) => InformatikaPage(),
-                //     ));
-              },
-            ),
-            ListTile(
-                leading: Icon(Icons.school),
-                title: const Text('Teknik Arsitektur'),
-                onTap: () {
-                  // Navigator.of(context).pop();
-                  // Navigator.of(context).push(new MaterialPageRoute(builder: (BuildContext context) => new InformatikaPage()));
-                }),
-            new Divider(),
-            GestureDetector(
-              child: ListTile(
-                leading: Icon(Icons.exit_to_app),
-                trailing: new Icon(Icons.cancel),
-                title: const Text('LOGOUT'),
-                onTap: () {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => Login()));
-                },
-              ),
-            ),
-          ],
-        ),
-      ),
     );
   }
 }
