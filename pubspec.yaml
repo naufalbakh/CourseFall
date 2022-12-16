@@ -74,6 +74,7 @@ flutter:
     - assets/kotlin.png
     - assets/sql.png
     - assets/xd.png
+    - assets/logo.png
     - lib/assets/images/BG.png
     - lib/assets/images/
     

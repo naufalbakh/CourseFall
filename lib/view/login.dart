@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:banyuwangikuliner/view/home.dart';
-import 'package:banyuwangikuliner/view/register1.dart';
 import 'package:dio/dio.dart';
 import 'package:hexcolor/hexcolor.dart';
+import 'package:banyuwangikuliner/view/home.dart';
+import 'package:banyuwangikuliner/view/register1.dart';
 
 class Login extends StatefulWidget {
   @override

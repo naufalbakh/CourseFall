@@ -43,7 +43,7 @@ class _RegisterState extends State<Register1> {
           decoration: BoxDecoration(
               image: DecorationImage(
             // opacity: 50,
-            image: AssetImage("lib/images/food1_33.jpg"),
+            image: AssetImage("assets/bg.png"),
             fit: BoxFit.cover,
           )),
           child: Column(

@@ -21,6 +21,7 @@ class _LoginState extends State<Boarding> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       home: Scaffold(
         body: Container(
           padding: EdgeInsets.symmetric(horizontal: 25, vertical: 23),
@@ -43,7 +44,7 @@ class _LoginState extends State<Boarding> {
                 child: Column(
                   children: <Widget>[
                     Image.asset(
-                      "lib/images/logo.png",
+                      "assets/logo.png",
                       height: 300,
                       width: 300,
                     ),

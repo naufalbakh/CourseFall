@@ -1,8 +1,7 @@
-import 'package:banyuwangikuliner/view/SplashScreen.dart';
+import 'package:flutter/material.dart';
 import 'package:banyuwangikuliner/view/boarding.dart';
 import 'package:banyuwangikuliner/view/home.dart';
 import 'package:banyuwangikuliner/view/login.dart';
-import 'package:flutter/material.dart';
 
 void main() {
   runApp(const MyApp());

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:banyuwangikuliner/view/login.dart';
 import 'package:banyuwangikuliner/service/apiservice.dart';
 import 'package:banyuwangikuliner/model/course.dart';
 import 'package:hexcolor/hexcolor.dart';
@@ -48,9 +49,33 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
         child: TabBar(
           controller: tabcontroller,
           tabs: [
-            Tab(icon: Icon(Icons.home)),
-            Tab(icon: Icon(Icons.bookmark)),
-            Tab(icon: Icon(Icons.account_box_rounded)),
+            Tab(
+                icon: GestureDetector(
+              child: Icon(Icons.home),
+              onTap: () => Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => Home(),
+                  )),
+            )),
+            Tab(
+                icon: GestureDetector(
+              child: Icon(Icons.book),
+              onTap: () => Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => Home(),
+                  )),
+            )),
+            Tab(
+                icon: GestureDetector(
+              child: Icon(Icons.account_balance_rounded),
+              onTap: () => Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => Home(),
+                  )),
+            )),
           ],
         ),
       ),
@@ -214,7 +239,7 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
                                         children: [
                                           Container(
                                             width: double.infinity,
-                                            height: 40,
+                                            height: 60,
                                             child: Row(
                                               children: [
                                                 Container(
@@ -301,6 +326,63 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
               }
             }
           }),
+      drawer: Drawer(
+        // Add a ListView to the drawer. This ensures the user can scroll
+        // through the options in the drawer if there isn't enough vertical
+        // space to fit everything.
+        child: ListView(
+          // Important: Remove any padding from the ListView.
+          padding: EdgeInsets.zero,
+          children: [
+            const DrawerHeader(
+              decoration: BoxDecoration(
+                color: Colors.blueAccent,
+              ),
+              child: Text(
+                'Fakultas Sains dan Teknologi',
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  color: Colors.white,
+                ),
+              ),
+            ),
+            ListTile(
+                leading: Icon(Icons.home),
+                title: const Text('HOME'),
+                onTap: () => print('Tap Trash menu')),
+            ListTile(
+              leading: Icon(Icons.school),
+              title: const Text('Teknik Informatika'),
+              onTap: () {
+                // Navigator.pop(context);
+                // Navigator.push(context,
+                //     MaterialPageRoute(builder: (context) => InformatikaPage(),
+                //     ));
+              },
+            ),
+            ListTile(
+                leading: Icon(Icons.school),
+                title: const Text('Teknik Arsitektur'),
+                onTap: () {
+                  // Navigator.of(context).pop();
+                  // Navigator.of(context).push(new MaterialPageRoute(builder: (BuildContext context) => new InformatikaPage()));
+                }),
+            new Divider(),
+            GestureDetector(
+              child: ListTile(
+                leading: Icon(Icons.exit_to_app),
+                trailing: new Icon(Icons.cancel),
+                title: const Text('LOGOUT'),
+                onTap: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => Login()));
+                },
+              ),
+            ),
+          ],
+        ),
+      ),
     );
   }
 }
