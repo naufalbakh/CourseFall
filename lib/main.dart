@@ -1,5 +1,7 @@
 import 'package:banyuwangikuliner/view/SplashScreen.dart';
+import 'package:banyuwangikuliner/view/boarding.dart';
 import 'package:banyuwangikuliner/view/home.dart';
+import 'package:banyuwangikuliner/view/login.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -11,14 +13,13 @@ class MyApp extends StatelessWidget {
 
   // This widget is the root of your application.
   @override
- Widget build(BuildContext context) {
+  Widget build(BuildContext context) {
     return MaterialApp(
       // theme: themeData,
       debugShowCheckedModeBanner: false,
       // home : Login(),
-      home : Home(),
+      home: Boarding(),
       // home : dashboardd(),
     );
   }
 }
-

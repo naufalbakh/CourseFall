@@ -1,6 +1,7 @@
-import 'package:banyuwangikuliner/view/login.dart';
 import 'package:flutter/material.dart';
+import 'package:banyuwangikuliner/view/login.dart';
 import 'package:dio/dio.dart';
+import 'package:hexcolor/hexcolor.dart';
 
 class Register1 extends StatefulWidget {
   @override
@@ -35,137 +36,142 @@ class _RegisterState extends State<Register1> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       home: Scaffold(
         body: Container(
-          
           padding: EdgeInsets.symmetric(horizontal: 25, vertical: 60),
           decoration: BoxDecoration(
-            image: DecorationImage(
-              // opacity: 50,
-              image: AssetImage("lib/images/food1_33.jpg"),
-              fit: BoxFit.cover,
-            )
-          ),
+              image: DecorationImage(
+            // opacity: 50,
+            image: AssetImage("lib/images/food1_33.jpg"),
+            fit: BoxFit.cover,
+          )),
           child: Column(
             children: <Widget>[
               Align(
-              alignment: Alignment.centerLeft,
-              child: Text(
-                "Ba Kul",
+                  alignment: Alignment.centerLeft,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        "Register",
+                        style: TextStyle(
+                          color: Colors.black,
+                          fontFamily: 'Poppins',
+                          fontSize: 18,
+                        ),
+                      ),
+                      Text(
+                        "CourseFall",
+                        style: TextStyle(
+                          color: Colors.black,
+                          fontFamily: 'Poppins',
+                          fontWeight: FontWeight.bold,
+                          fontSize: 24,
+                        ),
+                      ),
+                    ],
+                  )),
+              // SizedBox(height: 13),
+              // Align(
+              //   alignment: Alignment.centerLeft,
+              //   child: Text(
+              //     "Banyuwangi Kuliner",
+              //     style: TextStyle(
+              //         color: Color.fromARGB(255, 255, 255, 255),
+              //         fontSize: 17,
+              //         fontWeight: FontWeight.normal),
+              //   ),
+              // ),
+              SizedBox(height: 25),
+              TextField(
+                // memanggil controller
+                controller: controllerEmail,
                 style: TextStyle(
-                  color: Colors.orangeAccent,
-                  fontFamily: 'Poppins',
-                  fontWeight: FontWeight.bold,
-                  fontSize: 24,
-                ),
-              ),
-            ),
-            // SizedBox(height: 13),
-            Align(
-              alignment: Alignment.centerLeft,
-              child: Text(
-                "Banyuwangi Kuliner",
-                style: TextStyle(
-                  color: Color.fromARGB(255, 255, 255, 255),
-                  fontSize: 17,
-                  fontWeight: FontWeight.normal
-                ),
-              ),
-            ),
-            SizedBox(height: 25),
-            TextField(
-              // memanggil controller 
-              controller: controllerEmail,
-              style: TextStyle(
-                fontWeight: FontWeight.normal,
-                fontSize: 16,
-              ),
-              decoration: InputDecoration(
-                filled: true,
-                fillColor: Color.fromARGB(255, 241, 189, 122),
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(10),
-                ),
-                labelText: "Email Address",
-                hintText: "Email Address",
-                contentPadding:
-                    EdgeInsets.symmetric(horizontal: 20, vertical: 18),
-                hintStyle: TextStyle(
                   fontWeight: FontWeight.normal,
                   fontSize: 16,
                 ),
-              ),
-            ),
-            SizedBox(height: 18),
-            TextField(
-              // memanggil controller
-              controller: controllerPass,
-              style: TextStyle(
-                fontSize: 16,
-              ),
-              decoration: InputDecoration(
-                filled: true,
-                fillColor: Color.fromARGB(255, 241, 189, 122),
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(10),
+                decoration: InputDecoration(
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  labelText: "Email Address",
+                  hintText: "Email Address",
+                  contentPadding:
+                      EdgeInsets.symmetric(horizontal: 20, vertical: 18),
+                  hintStyle: TextStyle(
+                    fontWeight: FontWeight.normal,
+                    fontSize: 16,
+                  ),
                 ),
-                labelText: "Password",
-                hintText: "Password",
-                contentPadding:
-                    EdgeInsets.symmetric(horizontal: 20, vertical: 18),
-                hintStyle: TextStyle(
+              ),
+              SizedBox(height: 18),
+              TextField(
+                // memanggil controller
+                controller: controllerPass,
+                style: TextStyle(
                   fontSize: 16,
                 ),
+                decoration: InputDecoration(
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  labelText: "Password",
+                  hintText: "Password",
+                  contentPadding:
+                      EdgeInsets.symmetric(horizontal: 20, vertical: 18),
+                  hintStyle: TextStyle(
+                    fontSize: 16,
+                  ),
+                ),
+                obscureText: true,
               ),
-            ),
-            Spacer(),
-            ElevatedButton(
-              onPressed: () {
-                // memanggil method register, dengan parameter yg sudah diinputkan melalui text field
-                register(controllerEmail.text, controllerPass.text);
-              },
-              child: Text("SIGN UP",
-                  style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 18,
-                  )),
-              style: ElevatedButton.styleFrom(
-                  primary: Colors.orangeAccent,
-                  minimumSize: const Size.fromHeight(55),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(20),
-                  )),
-            ),
-            SizedBox(height: 10),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Text("Already have an account?",
+              Spacer(),
+              ElevatedButton(
+                onPressed: () {
+                  // memanggil method register, dengan parameter yg sudah diinputkan melalui text field
+                  register(controllerEmail.text, controllerPass.text);
+                },
+                child: Text("SIGN UP",
                     style: TextStyle(
-                      fontSize: 16,
-                      color: Colors.blueGrey,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 18,
                     )),
-                SizedBox(width: 7),
-                GestureDetector(
-                  onTap: () {
-                    Navigator.of(context).pushReplacement(MaterialPageRoute(
-                      builder: (context) => Login(),
-                    ));
-                  },
-                  child: Text("Log In",
+                style: ElevatedButton.styleFrom(
+                    primary: HexColor('067AE6'),
+                    minimumSize: const Size.fromHeight(55),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(20),
+                    )),
+              ),
+              SizedBox(height: 10),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text("Already have an account?",
                       style: TextStyle(
                         fontSize: 16,
-                        color: Colors.orangeAccent,
+                        color: Colors.blueGrey,
                       )),
-                ),
-              ],
-            ),
+                  SizedBox(width: 7),
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.of(context).pushReplacement(MaterialPageRoute(
+                        builder: (context) => Login(),
+                      ));
+                    },
+                    child: Text("Log In",
+                        style: TextStyle(
+                          fontSize: 16,
+                          color: HexColor('067AE6'),
+                        )),
+                  ),
+                ],
+              ),
             ],
           ),
         ),
-    ),
+      ),
     );
-
-    
   }
 }

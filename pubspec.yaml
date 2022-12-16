@@ -58,22 +58,25 @@ flutter:
 
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
-  # the material Icons class.
+  # the material WIcons class.
   uses-material-design: true
-
-  # To add assets to your application, add an assets section, like this:
-  # assets:
-  #   - images/a_dot_burr.jpeg
-  #   - images/a_dot_ham.jpeg
   assets:
-    - lib/images/food1.jpg
-    - lib/images/food1_3.jpg
-    - lib/images/food1_33.jpg
-    - lib/images/food1_3.png
-    - lib/images/logo.png
-    - lib/images/bg.png
-    - lib/images/sego_tempong.png
-    - lib/images/makan2.png
+    - assets/admin.png
+    - assets/aws.png
+    - assets/Backend-icon.png
+    - assets/BG.png
+    - assets/figma.png
+    - assets/Frontend-icon.png
+    - assets/html.png
+    - assets/htmlcss.png
+    - assets/java.png
+    - assets/jes.png
+    - assets/kotlin.png
+    - assets/sql.png
+    - assets/xd.png
+    - lib/assets/images/BG.png
+    - lib/assets/images/
+    
 
 
   # An image asset can refer to one or more resolution-specific "variants", see

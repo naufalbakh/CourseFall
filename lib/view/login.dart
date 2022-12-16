@@ -1,14 +1,8 @@
-// import 'package:dataramen/view/boarding.dart';
-// import 'package:dataramen/view/home.dart';
-import 'package:banyuwangikuliner/view/home.dart';
-// import 'package:dataramen/view/register.dart';
-import 'package:banyuwangikuliner/view/register1.dart';
-// import 'package:dataramen/view/splashScreen.dart';
-// import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-// import 'package:ramene/constants.dart';
-// import 'package:ramene/shared_pref.dart';
+import 'package:banyuwangikuliner/view/home.dart';
+import 'package:banyuwangikuliner/view/register1.dart';
 import 'package:dio/dio.dart';
+import 'package:hexcolor/hexcolor.dart';
 
 class Login extends StatefulWidget {
   @override
@@ -16,13 +10,11 @@ class Login extends StatefulWidget {
 }
 
 class _LoginState extends State<Login> {
-  
-
   TextEditingController controllerEmail = TextEditingController();
   TextEditingController controllerPass = TextEditingController();
 
   void login(String email, password) async {
-   try {
+    try {
       // ME-GET atau Mengambil data json dari link
       var response = await Dio().get('http://localhost:3000/user');
       // var response = await Dio().get('http://10.0.2.2:3000/users');
@@ -35,7 +27,8 @@ class _LoginState extends State<Login> {
           if (email == response.data[i]['email'] &&
               password == response.data[i]['password']) {
             print("Login success");
-            Navigator.push(context, MaterialPageRoute(builder: (context) => Home()));
+            Navigator.push(
+                context, MaterialPageRoute(builder: (context) => Home()));
             break;
           }
         }
@@ -87,30 +80,29 @@ class _LoginState extends State<Login> {
         child: Column(
           children: <Widget>[
             // Image.asset('../assets/logo.png',height: 50,),
-            SizedBox(height: 16,),
+            SizedBox(
+              height: 16,
+            ),
             Align(
               alignment: Alignment.topCenter,
               child: Column(
                 children: <Widget>[
                   Text(
-                    "WELCOME",
+                    "Welcome",
                     style: TextStyle(
                       color: Colors.black,
-                      
-                      fontWeight: FontWeight.bold,
+                      fontWeight: FontWeight.w500,
                       fontSize: 24,
                     ),
                   ),
                   SizedBox(height: 3),
-
-                  Text("Banyuwangi Kuliner",
+                  Text("CourseFall",
                       style: TextStyle(
-                        color: Colors.grey,
-                        fontSize: 27,
-                        
-                      )),
-                      Image.asset("lib/images/sego_tempong.png",
-                        height: 250, width: 250),
+                          color: Colors.black,
+                          fontSize: 27,
+                          fontWeight: FontWeight.w600)),
+                  // Image.asset("lib/images/sego_tempong.png",
+                  //     height: 250, width: 250),
                 ],
               ),
             ),
@@ -118,7 +110,6 @@ class _LoginState extends State<Login> {
             TextField(
               controller: controllerEmail,
               style: TextStyle(
-                
                 fontSize: 16,
               ),
               decoration: InputDecoration(
@@ -130,16 +121,15 @@ class _LoginState extends State<Login> {
                 contentPadding:
                     EdgeInsets.symmetric(horizontal: 20, vertical: 18),
                 hintStyle: TextStyle(
-                  
                   fontSize: 16,
                 ),
               ),
             ),
             SizedBox(height: 18),
             TextField(
+              obscureText: true,
               controller: controllerPass,
               style: TextStyle(
-                
                 fontSize: 16,
               ),
               decoration: InputDecoration(
@@ -151,7 +141,6 @@ class _LoginState extends State<Login> {
                 contentPadding:
                     EdgeInsets.symmetric(horizontal: 20, vertical: 18),
                 hintStyle: TextStyle(
-                  
                   fontSize: 16,
                 ),
               ),
@@ -162,9 +151,8 @@ class _LoginState extends State<Login> {
               child: Text(
                 "Forgot password?",
                 style: TextStyle(
-                  color: Colors.amberAccent,
+                  color: HexColor('067AE6'),
                   fontSize: 16,
-                  
                 ),
               ),
             ),
@@ -179,7 +167,7 @@ class _LoginState extends State<Login> {
                     fontSize: 18,
                   )),
               style: ElevatedButton.styleFrom(
-                  primary:  Colors.orangeAccent,
+                  primary: HexColor('067AE6'),
                   minimumSize: const Size.fromHeight(55),
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(20),
@@ -206,7 +194,7 @@ class _LoginState extends State<Login> {
                       style: TextStyle(
                         fontFamily: 'Poppins Light',
                         fontSize: 16,
-                        color: Colors.orangeAccent,
+                        color: HexColor('067AE6'),
                       )),
                 ),
               ],

@@ -1,19 +1,19 @@
-import 'package:flutter/material.dart';
-import 'package:banyuwangikuliner/model/resep_model.dart';
+// import 'package:flutter/material.dart';
 
-class MyWidget extends StatefulWidget {
-  final Resep data;
-  Future<List<Data>> fetchData;
 
-  MyWidget({required this.data, required this.fetchData, super.key});
+// class MyWidget extends StatefulWidget {
+//   final Resep data;
+//   Future<List<Data>> fetchData;
 
-  @override
-  State<MyWidget> createState() => _MyWidgetState();
-}
+//   MyWidget({required this.data, required this.fetchData, super.key});
 
-class _MyWidgetState extends State<MyWidget> {
-  @override
-  Widget build(BuildContext context) {
-    return Container();
-  }
-}
+//   @override
+//   State<MyWidget> createState() => _MyWidgetState();
+// }
+
+// class _MyWidgetState extends State<MyWidget> {
+//   @override
+//   Widget build(BuildContext context) {
+//     return Container();
+//   }
+// }
